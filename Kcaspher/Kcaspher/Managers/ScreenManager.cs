@@ -48,13 +48,14 @@ namespace Projet_2._0
 
     public class ScreenManager
     {
-        int delta;
+        int delta, deltaboss;
         public Boolean respawn, boutonlvl3w1;
         public Casper casper;
         public Casper casper2;
         public Casper player2;
         DyingScreen cinematic;
-        AI_basic BigMonster;
+        AI_basic BigMonster;        
+        AI_basic Boss;
         Boolean bigM;
         Menu_Base menubase;
         Menu_Options menuoptions;
@@ -173,6 +174,8 @@ namespace Projet_2._0
                     shots2 = new Shots();
                     shots3 = new Shots();
 
+                    deltaboss = 0;
+
                     bigM = true;
 
                     finLvl1 = new Rectangle(Res.gI().ScaleX(4620),Res.gI().ScaleY(270),Res.gI().ScaleX(200),Res.gI().ScaleY(50));
@@ -188,11 +191,12 @@ namespace Projet_2._0
                     AI_w2l2 = new AI_W2L2();
                     AI_w2l2_2 = new AI_W2L2_2();
                     AI_w2l3 = new AI_W2L3();
-
+                    Boss = new AI_basic(Content_Manager.getInstance().Textures["PlayerDroite1"], Content_Manager.getInstance().Textures["PlayerGauche1"], new Rectangle(Res.gI().ScaleX(820), Res.gI().ScaleY(150), Res.gI().ScaleX(30), Res.gI().ScaleY(50)), new Vector2(4, 0), Res.gI().ScaleX(610));
+                    // 820x y150 x1430 y150 30 50
                     Game1.GetGame().IsMouseVisible = true;
 
                     casper.healthpoint.healthpoint = 15;
-                    casper2.healthpoint.healthpoint = 13;
+                    casper2.healthpoint.healthpoint = 5;
                     //player2.healthpoint.healthpoint = 13;
                     break;
                 case GameType.Menu_Play_Type:
@@ -214,24 +218,35 @@ namespace Projet_2._0
                 case GameType.Menu_Play_Multi_Type:
                     // menuMulti.update(gametime, ref gametype, ref previousgametype);
                     previousgametype = GameType.Menu_Play_Solo_World1_Type;
-                    if (previousgametype == GameType.Menu_Play_Solo_World1_Type && respawn == true)
+                    if (respawn)
                     {
                         controls.Position = new Vector2(Res.gI().ScaleX(200), Res.gI().ScaleY(924));
                         respawn = false;
+                    }
+                    if (casper.healthpoint.respawn)
+                    {
+                        controls.Position = controlsPlayer2.Position;
+                        casper.healthpoint.respawn = false;
+                    }
+                    if (player2.healthpoint.respawn)
+                    {
+                        controlsPlayer2.Position = controls.Position;
+                        player2.healthpoint.respawn = false;
                     }
                     if (casper.Position.X > Res.gI().ScaleX(840))
                         camera.update(gametime, casper.Position);
                     if (casper.Position.X > Res.gI().ScaleX(4200))
                         camera.update(gametime, new Vector2(Res.gI().ScaleX(4200), 0));
-                    casper.update(gametime, controls, gametype, w1l1.getList(), spikes.getList());
-                    player2.update(gametime, controlsPlayer2, gametype, w1l1.getList(), spikes.getList());
+                    AI_w1l1.update(gametime);
+                    casper.update(gametime, controls, gametype, w1l1.getList(), spikes.getList().Concat<Rectangle>(AI_w1l1.getListRectangle()));
+                    player2.update(gametime, controlsPlayer2, gametype, w1l1.getList(), spikes.getList().Concat<Rectangle>(AI_w1l1.getListRectangle()));
 
                     Game1.GetGame().IsMouseVisible = false;
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
                     {
                         previousgametype = GameType.Menu_Play_Multi_Type;
-                        casper.update(gametime, controls, gametype, w1l1.getList(), spikes.getList());
-                        player2.update(gametime, controlsPlayer2, gametype, w1l1.getList(), spikes.getList());
+                        casper.update(gametime, controls, gametype, w1l1.getList(), spikes.getList().Concat<Rectangle>(AI_w1l1.getListRectangle()));
+                        player2.update(gametime, controlsPlayer2, gametype, w1l1.getList(), spikes.getList().Concat<Rectangle>(AI_w1l1.getListRectangle()));
 
                         Game1.GetGame().IsMouseVisible = true;
                         MediaPlayer.Stop();
@@ -317,7 +332,15 @@ namespace Projet_2._0
                         bigM = false;
                     }
                     if (BigMonster != null)
+                    {
                         BigMonster.update(gametime);
+                        if (casper.Hitbox.Intersects(BigMonster.Hitbox))
+                        {
+                            respawn = true;
+                            casper.healthpoint.healthpoint -= 1;
+                            SoundManager.hp.Play();
+                        }
+                    }
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
                     {
                         Game1.GetGame().IsMouseVisible = true;
@@ -327,7 +350,7 @@ namespace Projet_2._0
                         previousgametype = GameType.Menu_Play_Solo_world1_lvl2;
                     }
                     previouskeyboardstate = keyboardstate;
-
+                    
                     // fin lvl
                     if (casper.Hitbox.Intersects(finLvl2))
                     {
@@ -347,8 +370,12 @@ namespace Projet_2._0
                         camera.update(gametime, casper.Position);
                     if (casper.Position.X > Res.gI().ScaleX(1400))
                         camera.update(gametime, new Vector2(Res.gI().ScaleX(1400), 0));
+                    deltaboss++;
+                    if (deltaboss > 60)
+                        deltaboss = 0;
 
                     Game1.GetGame().casperr = casper;
+                    Boss.update(gametime);
                     casper.update(gametime, controls, gametype, w1l3.getList(), sw1l3.getList());
 
                     Game1.GetGame().IsMouseVisible = false;
@@ -376,6 +403,7 @@ namespace Projet_2._0
                         controlsWorld2.Position = new Vector2(Res.gI().ScaleX(55), Res.gI().ScaleY(924));
                         respawn = false;
                         casper2.healthpoint.respawn = false;
+                        AI_w2l1 = new AI_W2L1();
                     }
                     if (casper2.Position.X > Res.gI().ScaleX(840))
                         camera.update(gametime, casper2.Position);
@@ -411,6 +439,7 @@ namespace Projet_2._0
                         controlsWorld2.Position = new Vector2(Res.gI().ScaleX(2420), Res.gI().ScaleY(80));
                         respawn = false;
                         casper2.healthpoint.respawn = false;
+                        AI_w2l2 = new AI_W2L2();
                     }
                     if (casper2.Position.X > Res.gI().ScaleX(840))
                         camera.update(gametime, casper2.Position);
@@ -449,6 +478,7 @@ namespace Projet_2._0
                         controlsWorld2.Position = new Vector2(Res.gI().ScaleX(55), Res.gI().ScaleY(924));
                         respawn = false;
                         casper2.healthpoint.respawn = false;
+                        AI_w2l3 = new AI_W2L3();
                     }
                     if (casper2.Position.X > Res.gI().ScaleX(840))
                         camera.update(gametime, casper2.Position);
@@ -469,12 +499,11 @@ namespace Projet_2._0
                         previousgametype = GameType.Menu_Play_Solo_world2_lvl3;
                     }
                     previouskeyboardstate = keyboardstate;
-
-
-                    if (casper2.Hitbox.Intersects(finLvl6))
+                    if (AI_w2l3.getListRectangle().Count==0)
                     {
-                         gametype = GameType.End1;
+                        gametype = GameType.End1;
                     }
+                    
                     break;
                 case GameType.Exit:
                     Game1.GetGame().Exit();
@@ -575,21 +604,21 @@ namespace Projet_2._0
                 case GameType.Trans2:
                     cinematic.update(GameType.Trans3);
                     break;
-               case GameType.Trans3:
+                case GameType.Trans3:
                     cinematic.update(GameType.Menu_Play_Solo_world2_lvl1);
                     break;
-               case GameType.End1:
+                case GameType.End1:
                     cinematic.update(GameType.End2);
                     break;
-               case GameType.End2:
+                case GameType.End2:
                     cinematic.update(GameType.End3);
                     break;
-               case GameType.End3:
+                case GameType.End3:
                     cinematic.update(GameType.Menu_Base_Type);
                     break;
-                    //case GameType.Intro1:
-                    //cinematic.update(GameType.Intro2, Content_Manager.getInstance().Textures["Intro1"]
-                    //break;
+                case GameType.Dead:
+                    cinematic.update(GameType.Menu_Base_Type);
+                    break;
                 default:
                     menubase.update(gametime, ref gametype, ref previousgametype);
                     break;
@@ -618,8 +647,10 @@ namespace Projet_2._0
                 case GameType.Menu_Play_Multi_Type:
                     d_w1l1_1.Draw(spritebatch);
                     d_w1l1_2.Draw(spritebatch);
+                    AI_w1l1.Draw(spritebatch);
                     casper.Draw(spritebatch, Color.White);
                     player2.Draw(spritebatch, Color.CornflowerBlue);
+                    casper.healthpoint.draw(spritebatch, camera);
                     break;
                 case GameType.Menu_Option_Type:
                     menuoptions.Draw(spritebatch);
@@ -649,6 +680,28 @@ namespace Projet_2._0
                     d_w1l3.Draw(spritebatch);
                     casper.Draw(spritebatch, Color.White);
                     casper.healthpoint.draw(spritebatch, camera);
+                    if (Boss.Dtexture == Content_Manager.getInstance().Textures["PlayerDroite1"])
+                    {
+                        if (deltaboss < 15)
+                        spritebatch.Draw(Content_Manager.getInstance().Textures["PlayerDroite1"], Boss.Hitbox, Color.White);
+                    else if (deltaboss < 30)
+                        spritebatch.Draw(Content_Manager.getInstance().Textures["PlayerDroite2"], Boss.Hitbox, Color.White);
+                    else if (deltaboss < 45)
+                        spritebatch.Draw(Content_Manager.getInstance().Textures["PlayerDroite3"], Boss.Hitbox, Color.White);
+                    else if (deltaboss <= 60)
+                        spritebatch.Draw(Content_Manager.getInstance().Textures["PlayerDroite4"], Boss.Hitbox, Color.White);
+                    }
+                    else
+                    {
+                        if (deltaboss < 15)
+                        spritebatch.Draw(Content_Manager.getInstance().Textures["PlayerGauche1"], Boss.Hitbox, Color.White);
+                    else if (deltaboss < 30)
+                        spritebatch.Draw(Content_Manager.getInstance().Textures["PlayerGauche2"], Boss.Hitbox, Color.White);
+                    else if (deltaboss < 45)
+                        spritebatch.Draw(Content_Manager.getInstance().Textures["PlayerGauche3"], Boss.Hitbox, Color.White);
+                    else if (deltaboss <= 60)
+                        spritebatch.Draw(Content_Manager.getInstance().Textures["PlayerGauche4"], Boss.Hitbox, Color.White);
+                    }
                     delta++;
                     if (delta > 30)
                         delta = 0;
@@ -808,6 +861,9 @@ namespace Projet_2._0
                     break;
                 case GameType.End3:
                     cinematic.Draw(spritebatch, Content_Manager.getInstance().Textures["End3"]);
+                    break;
+                case GameType.Dead:
+                    cinematic.Draw(spritebatch, Content_Manager.getInstance().Textures["Dead"]);
                     break;
                 default:
                     menubase.Draw(spritebatch);

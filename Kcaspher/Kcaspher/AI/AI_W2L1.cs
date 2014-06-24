@@ -16,12 +16,12 @@ namespace Kcaspher.AI
 
         public AI_W2L1()
         {
-            AI_w2l1.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(100), Res.gI().ScaleY(180), Res.gI().ScaleX(40), Res.gI().ScaleY(40)),15));
-            AI_w2l1.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(300), Res.gI().ScaleY(180), Res.gI().ScaleX(40), Res.gI().ScaleY(40)),15));
-            AI_w2l1.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(1300), Res.gI().ScaleY(900), Res.gI().ScaleX(40), Res.gI().ScaleY(40)),15));
-            AI_w2l1.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(1470), Res.gI().ScaleY(900), Res.gI().ScaleX(40), Res.gI().ScaleY(40)),15));
-            AI_w2l1.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(2270), Res.gI().ScaleY(217), Res.gI().ScaleX(40), Res.gI().ScaleY(40)),15));
-            AI_w2l1.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(2270), Res.gI().ScaleY(436), Res.gI().ScaleX(40), Res.gI().ScaleY(40)),15));
+            AI_w2l1.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(100), Res.gI().ScaleY(180), Res.gI().ScaleX(40), Res.gI().ScaleY(40)),10));
+            AI_w2l1.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(300), Res.gI().ScaleY(180), Res.gI().ScaleX(40), Res.gI().ScaleY(40)),10));
+            AI_w2l1.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(1300), Res.gI().ScaleY(900), Res.gI().ScaleX(40), Res.gI().ScaleY(40)),10));
+            AI_w2l1.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(1470), Res.gI().ScaleY(900), Res.gI().ScaleX(40), Res.gI().ScaleY(40)),10));
+            AI_w2l1.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(2270), Res.gI().ScaleY(217), Res.gI().ScaleX(40), Res.gI().ScaleY(40)),10));
+            AI_w2l1.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(2270), Res.gI().ScaleY(436), Res.gI().ScaleX(40), Res.gI().ScaleY(40)),10));
         }
 
         public void update(GameTime gametime, Casper casper)

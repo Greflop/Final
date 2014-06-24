@@ -57,21 +57,8 @@ namespace Kcaspher
 
                 for (int i = 0; i < ammunition.Count; i++)
                 {                   
-                    //for (int j = 0; j < AIlist.Count; j++)
-                    //{
-                    //    if (ammunition.Count != 0)
-                    //    {
-                    //        if (AIlist[j].hitbox.Intersects(ammunition[i].Hitbox))
-                    //        {
-                    //            ammunition.RemoveAt(i);
-                    //        }
-                    //    }
-                    //}
-                    //if (ammunition.Count != 0)
-                    //{
                         if (!(ammunition[i].Hitbox.Intersects(ammunition[i].isVisible)))
                             ammunition.RemoveAt(i);
-                    //}
                 }
             }
             previousmouseState = mouseState;            

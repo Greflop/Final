@@ -105,6 +105,7 @@ namespace Projet_2._0
             AddTextures("Cinematicmagueule/Casper Mad GaucheTrans","Trans2");
             AddTextures("Cinematicmagueule/Ghostbusters Droite","End1");
             AddTextures("Cinematicmagueule/Ghostbusters DroiteINtro", "Intro2");
+            AddTextures("CasperFail","Dead");
         }
 
         public void AddTextures(String file, String name = "") 
