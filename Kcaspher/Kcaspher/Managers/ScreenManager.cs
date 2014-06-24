@@ -38,7 +38,8 @@ namespace Projet_2._0
 
     public class ScreenManager
     {
-        public Boolean respawn;
+        int delta;
+        public Boolean respawn, boutonlvl3w1;
         public Casper casper;
         public Casper casper2;
         public Casper player2;
@@ -75,7 +76,7 @@ namespace Projet_2._0
         Spikes spikes;
         Sw1l2 sw1l2;
         Sw1l3 sw1l3;
-        public ParticleEngine tp1,tp2, tp3, tp4;
+        public ParticleEngine tp1, tp2, tp3, tp4;
         Shots shots, shots2, shots3;
         Rectangle finLvl1, finLvl2, finLvl3, finLvl4, finLvl5, finLvl6;
         public ScreenManager(GameType gametype, Game1 game)
@@ -88,8 +89,8 @@ namespace Projet_2._0
             menusolo2 = new Menu_Play_Solo_World2(Content_Manager.getInstance().Textures["solo2"]);
             menuMulti = new Menu_Play_Multi(Content_Manager.getInstance().Textures["menumulti"]);
             menupauseoption = new Menu_Pause_Options(Content_Manager.getInstance().Textures["menupauseoption"]);
-            
 
+            delta = 0;
             camera = new Camera(Game1.GetGame().GraphicsDevice.Viewport);
             isThere = false;
 
@@ -103,7 +104,7 @@ namespace Projet_2._0
             teleport2 = new Rectangle(Res.gI().ScaleX(3480), Res.gI().ScaleY(480), Res.gI().ScaleX(80), Res.gI().ScaleY(280));
             List<Texture2D> textures = new List<Texture2D>();
             textures.Add(Content_Manager.getInstance().Textures["tp"]);
-            tp1 = tp2 = tp3=tp4 = new ParticleEngine(textures, new Vector2(0, 0));
+            tp1 = tp2 = tp3 = tp4 = new ParticleEngine(textures, new Vector2(0, 0));
 
 
             Game1.GetGame().casperr = casper;
@@ -124,12 +125,13 @@ namespace Projet_2._0
             this.gametype = gametype;
 
 
-            finLvl1 = new Rectangle(Res.gI().ScaleX(4620),Res.gI().ScaleY(270),Res.gI().ScaleX(200),Res.gI().ScaleY(50));
-            finLvl2 = new Rectangle(Res.gI().ScaleX(4470),Res.gI().ScaleY(700),Res.gI().ScaleX(200),Res.gI().ScaleY(60));
-            //finLvl3 = new Rectangle(Res.gI().ScaleX(),Res.gI().ScaleY(),Res.gI().ScaleX(),Res.gI().ScaleY())
-            finLvl4 = new Rectangle(Res.gI().ScaleX(2410),Res.gI().ScaleY(60),Res.gI().ScaleX(70),Res.gI().ScaleY(90));
-            finLvl5 = new Rectangle(Res.gI().ScaleX(40),Res.gI().ScaleY(900),Res.gI().ScaleX(70),Res.gI().ScaleY(90));
-            finLvl6 = new Rectangle(Res.gI().ScaleX(1838), Res.gI().ScaleY(259), Res.gI().ScaleX(23), Res.gI().ScaleY(24));
+            finLvl1 = new Rectangle(Res.gI().ScaleX(4620), Res.gI().ScaleY(270), Res.gI().ScaleX(200), Res.gI().ScaleY(50));
+            finLvl2 = new Rectangle(Res.gI().ScaleX(4470), Res.gI().ScaleY(700), Res.gI().ScaleX(200), Res.gI().ScaleY(60));
+            finLvl3 = new Rectangle(Res.gI().ScaleX(1038), Res.gI().ScaleY(296), Res.gI().ScaleX(23), Res.gI().ScaleY(24));
+            finLvl4 = new Rectangle(Res.gI().ScaleX(2410), Res.gI().ScaleY(60), Res.gI().ScaleX(70), Res.gI().ScaleY(90));
+            finLvl5 = new Rectangle(Res.gI().ScaleX(40), Res.gI().ScaleY(900), Res.gI().ScaleX(70), Res.gI().ScaleY(90));
+            finLvl6 = new Rectangle(Res.gI().ScaleX(1838), Res.gI().ScaleY(300), Res.gI().ScaleX(23), Res.gI().ScaleY(24));
+            boutonlvl3w1 = true;
 
             //List<Rectangle> enemies = spikes.getList().Concat<Rectangle>(AI_w1l1.getListRectangle()).ToList<Rectangle>;
         }
@@ -138,7 +140,7 @@ namespace Projet_2._0
         {
             camera.update(gametime, new Vector2(Res.gI().ScaleX(840), 0));
             keyboardstate = Keyboard.GetState();
-            
+
             switch (gametype)
             {
                 case GameType.Menu_Base_Type:
@@ -361,6 +363,7 @@ namespace Projet_2._0
                         Game1.GetGame().IsMouseVisible = true;
                         MediaPlayer.Stop();
                         MediaPlayer.Play(SoundManager.pause);
+                        //MediaPlayer.Volume = 0.7f;
                         gametype = GameType.Menu_Pause;
                         previousgametype = GameType.Menu_Play_Solo_world2_lvl1;
                     }
@@ -384,7 +387,7 @@ namespace Projet_2._0
                         camera.update(gametime, casper2.Position);
                     if (casper2.Position.X > Res.gI().ScaleX(1680))
                         camera.update(gametime, new Vector2(Res.gI().ScaleX(1680), 0));
-                    AI_w2l2.update(gametime,casper2);
+                    AI_w2l2.update(gametime, casper2);
                     AI_w2l2_2.update(gametime);
                     Game1.GetGame().casperr = casper2;
                     Game1.GetGame().IsMouseVisible = true;
@@ -426,7 +429,7 @@ namespace Projet_2._0
 
                     casper2.update(gametime, controlsWorld2, gametype, w2l3.getList(), AI_w2l3.getListRectangle());
                     Game1.GetGame().IsMouseVisible = true;
-                    shots3.update(gametime, casper2.Position, AI_w2l3.AI_w2l3); 
+                    shots3.update(gametime, casper2.Position, AI_w2l3.AI_w2l3);
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
                     {
                         Game1.GetGame().IsMouseVisible = true;
@@ -588,7 +591,19 @@ namespace Projet_2._0
                     d_w1l3.Draw(spritebatch);
                     casper.Draw(spritebatch, Color.White);
                     casper.healthpoint.draw(spritebatch, camera);
-                    // IA
+                    delta++;
+                    if (delta > 30)
+                        delta = 0;
+                    if (casper.Hitbox.Intersects(finLvl6) )//&& boutonlvl3w1)
+                    {
+                        boutonlvl3w1 = false;
+                        if (delta < 10)
+                            spritebatch.Draw(Content_Manager.getInstance().Textures["feu1"], new Rectangle(Res.gI().ScaleX(190), Res.gI().ScaleY(-70), Res.gI().ScaleX(1680), Res.gI().ScaleY(1050)), Color.White);
+                        else if (delta < 20)
+                            spritebatch.Draw(Content_Manager.getInstance().Textures["feu2"], new Rectangle(Res.gI().ScaleX(220), Res.gI().ScaleY(-70), Res.gI().ScaleX(1680), Res.gI().ScaleY(1050)), Color.White);
+                        else if (delta < 30)
+                            spritebatch.Draw(Content_Manager.getInstance().Textures["feu3"], new Rectangle(Res.gI().ScaleX(150), Res.gI().ScaleY(-7), Res.gI().ScaleX(1680), Res.gI().ScaleY(1050)), Color.White);
+                    }
                     break;
                 case GameType.Menu_Play_Solo_world2_lvl1:
                     d_w2l1.Draw(spritebatch);
