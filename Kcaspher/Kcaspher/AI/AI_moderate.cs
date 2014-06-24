@@ -49,8 +49,8 @@ namespace Projet_2._0
 
                 }
             }
-            aggro.X = hitbox.X - Res.gI().ScaleX(800) / 2;
-            aggro.Y = hitbox.Y - Res.gI().ScaleY(800) / 2;
+            aggro.X = hitbox.X - Res.gI().ScaleX(400);
+            aggro.Y = hitbox.Y - Res.gI().ScaleY(400);
             if (!aggro.Intersects(casper.Hitbox))
             {
                 casperIsIntersecting = false;

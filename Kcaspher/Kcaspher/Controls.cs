@@ -85,7 +85,7 @@ namespace Projet_2._0
                 if (keyboardState.IsKeyDown(Up) && hasJumped == false)
                 {
                     SoundManager.jump.Play();
-                    Velocity.Y += -600;
+                    Velocity.Y -= Res.gI().ScaleX(600);
                     hasJumped = true;
                 }
                 if (keyboardState.IsKeyDown(Down) && hasJumped == true)

@@ -33,7 +33,10 @@ namespace Projet_2._0
                     respawn = true;
                     healthpoint += -1;
                     SoundManager.hp.Play();
-
+                }
+                if (healthpoint <= 0)
+                {
+                    Game1.GetGame().screenmanager.gametype = GameType.Menu_Base_Type;
                 }
             }
         }

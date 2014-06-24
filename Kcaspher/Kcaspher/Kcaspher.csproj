@@ -125,6 +125,7 @@
     <Compile Include="Client.cs" />
     <Compile Include="Controls.cs" />
     <Compile Include="Decors.cs" />
+    <Compile Include="DyingScreen.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="HealthPoint.cs" />
     <Compile Include="Movable.cs" />

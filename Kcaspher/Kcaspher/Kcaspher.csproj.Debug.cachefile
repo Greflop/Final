@@ -59,6 +59,9 @@ Content\boss\boss2.xnb
 Content\boss\boss3.xnb
 Content\boss\boss4.xnb
 Content\boss\boss5.xnb
+Content\feu\feu1.xnb
+Content\feu\feu2.xnb
+Content\feu\feu3.xnb
 Content\Songs\Casper sound\Hp_lost.xnb
 Content\Songs\Casper sound\Jump.xnb
 Content\Songs\IA sound\Alert_AI.xnb
@@ -67,9 +70,15 @@ Content\Songs\Casper sound\gun.xnb
 Content\Songs\Ambiance.xnb
 Content\Songs\Ambiance_ingame.xnb
 Content\Songs\Ambiance_Pause.xnb
-Content\feu\feu1.xnb
-Content\feu\feu2.xnb
-Content\feu\feu3.xnb
+Content\Cinematicmagueule\Casper GhostbustersEnd.xnb
+Content\Cinematicmagueule\Casper Mad Gauche.xnb
+Content\Cinematicmagueule\Ghostbusters Droite.xnb
+Content\Cinematicmagueule\Boss Ghostbusters.xnb
+Content\Cinematicmagueule\Boss W1 Gauche.xnb
+Content\Cinematicmagueule\Boss W1 Droite.xnb
+Content\Cinematicmagueule\Casper Boss.xnb
+Content\Cinematicmagueule\Ghostbusters DroiteINtro.xnb
+Content\Cinematicmagueule\Casper Mad GaucheTrans.xnb
 Content\Songs\Ambiance.wma
 Content\Songs\Ambiance_ingame.wma
 Content\Songs\Ambiance_Pause.wma

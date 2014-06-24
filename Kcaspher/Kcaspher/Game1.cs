@@ -23,7 +23,7 @@ namespace Projet_2._0
         public Casper casperr;
         //Decors decors;
         SpriteFont fontdebug;
-        ScreenManager screenmanager;
+        public ScreenManager screenmanager;
         GameType gameState;
         static Game1 game;
         MouseState mouseState;

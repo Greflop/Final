@@ -80,7 +80,7 @@ namespace Projet_2._0
             previousmouseState = mouseState;
             if (Mouse.GetState().LeftButton == ButtonState.Pressed && w1.Intersect(Mouse.GetState().X, Mouse.GetState().Y))
             {
-                gametype = GameType.Menu_Play_Solo_world1_lvl1;
+                gametype = GameType.Intro1;
                 MediaPlayer.Stop();
                 MediaPlayer.Play(SoundManager.ingame);
                 MediaPlayer.IsRepeating = true;
