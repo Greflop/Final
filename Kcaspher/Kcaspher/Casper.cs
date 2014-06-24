@@ -45,7 +45,7 @@ namespace Projet_2._0
 
         public void update(GameTime gametime, Controls controls, GameType gametype, List<Rectangle> level,IEnumerable<Rectangle> enemies)
         {
-            healthpoint.update(this, enemies);
+            healthpoint.update(this, enemies,gametype);
             animation.update(gametime, gametype);
             previousPosition = Position;
             //controls.update(gametime, gametype, this, level);
