@@ -81,7 +81,7 @@ namespace Projet_2._0
             {
                 gametype = GameType.Menu_Play_Solo_world2_lvl1;
                 MediaPlayer.Stop();
-                MediaPlayer.Play(SoundManager.ingame);
+                MediaPlayer.Play(SoundManager.ingame6);
                 MediaPlayer.IsRepeating = true;
 
             }
@@ -89,7 +89,7 @@ namespace Projet_2._0
             {
                 gametype = GameType.Menu_Play_Solo_world2_lvl2;
                 MediaPlayer.Stop();
-                MediaPlayer.Play(SoundManager.ingame);
+                MediaPlayer.Play(SoundManager.ingame5);
                 MediaPlayer.IsRepeating = true;
 
             }
@@ -97,7 +97,7 @@ namespace Projet_2._0
             {
                 gametype = GameType.Menu_Play_Solo_world2_lvl3;
                 MediaPlayer.Stop();
-                MediaPlayer.Play(SoundManager.ingame);
+                MediaPlayer.Play(SoundManager.ingame4);
                 MediaPlayer.IsRepeating = true;
 
             }

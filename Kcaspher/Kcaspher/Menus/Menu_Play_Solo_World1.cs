@@ -90,14 +90,14 @@ namespace Projet_2._0
             {
                 gametype = GameType.Menu_Play_Solo_world1_lvl2;
                 MediaPlayer.Stop();
-                MediaPlayer.Play(SoundManager.ingame);
+                MediaPlayer.Play(SoundManager.ingame2);
                 MediaPlayer.IsRepeating = true;
             }
             if (Mouse.GetState().LeftButton == ButtonState.Pressed && w3.Intersect(Mouse.GetState().X, Mouse.GetState().Y))
             {
                 gametype = GameType.Menu_Play_Solo_world1_lvl3;
                 MediaPlayer.Stop();
-                MediaPlayer.Play(SoundManager.ingame);
+                MediaPlayer.Play(SoundManager.ingame3);
                 MediaPlayer.IsRepeating = true;
             }
 

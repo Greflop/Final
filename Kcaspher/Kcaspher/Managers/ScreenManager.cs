@@ -99,8 +99,8 @@ namespace Projet_2._0
             d_w1l2_2 = new Decors(Content_Manager.getInstance().Textures["W1L2_2"], new Rectangle(Res.gI().ScaleX(2520), 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
             d_w1l3 = new Decors(Content_Manager.getInstance().Textures["W1L3"], new Rectangle(0, 0, Res.gI().ScaleX(2240), Res.gI().ScaleY(1050)));
 
-            teleport1 = new Rectangle(1240, 400, 80, 80);
-            teleport2 = new Rectangle(3480, 480, 80, 280);
+            teleport1 = new Rectangle(Res.gI().ScaleX(1240), Res.gI().ScaleY(400), Res.gI().ScaleX(80), Res.gI().ScaleY(80));
+            teleport2 = new Rectangle(Res.gI().ScaleX(3480), Res.gI().ScaleY(480), Res.gI().ScaleX(80), Res.gI().ScaleY(280));
             List<Texture2D> textures = new List<Texture2D>();
             textures.Add(Content_Manager.getInstance().Textures["tp"]);
             tp1 = tp2 = tp3=tp4 = new ParticleEngine(textures, new Vector2(0, 0));
@@ -474,10 +474,31 @@ namespace Projet_2._0
                     //camera.update(gametime, casper.Position);
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
                     {
+
+                        ////////// test avec previous game stqt
                         Game1.GetGame().IsMouseVisible = false;
-                        gametype = previousgametype;
                         MediaPlayer.Stop();
-                        MediaPlayer.Play(SoundManager.ingame);
+                        gametype = previousgametype;
+                        if (previousgametype == GameType.Menu_Play_Solo_world1_lvl2)
+                        {
+                            MediaPlayer.Play(SoundManager.ingame2);
+                        }
+                        if (previousgametype == GameType.Menu_Play_Solo_world1_lvl3)
+                        {
+                            MediaPlayer.Play(SoundManager.ingame3);
+                        }
+                        if (previousgametype == GameType.Menu_Play_Solo_world2_lvl3)
+                        {
+                            MediaPlayer.Play(SoundManager.ingame4);
+                        }
+                        if (previousgametype == GameType.Menu_Play_Solo_world2_lvl1)
+                        {
+                            MediaPlayer.Play(SoundManager.ingame6);
+                        }
+                        if (previousgametype == GameType.Menu_Play_Solo_world2_lvl2)
+                        {
+                            MediaPlayer.Play(SoundManager.ingame5);
+                        }
 
                     }
                     menupause.update(gametime, ref gametype, ref previousgametype, camera.centre);
