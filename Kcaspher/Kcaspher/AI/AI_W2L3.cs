@@ -18,8 +18,8 @@ namespace Kcaspher.AI
         {
             AI_w2l3.Add(new AI_moderate(Content_Manager.getInstance().Textures["focheur"], new Rectangle(Res.gI().ScaleX(760), Res.gI().ScaleY(450), Res.gI().ScaleX(60), Res.gI().ScaleY(100)),20)); // garde 1
             // garde 2
-            AI_w2l3.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(515), Res.gI().ScaleY(156), Res.gI().ScaleX(40), Res.gI().ScaleY(40)),10)); // random vert
-            AI_w2l3.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy3"], new Rectangle(Res.gI().ScaleX(60), Res.gI().ScaleY(120), Res.gI().ScaleX(60), Res.gI().ScaleY(60)),15)); // chiote
+            AI_w2l3.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(515), Res.gI().ScaleY(156), Res.gI().ScaleX(40), Res.gI().ScaleY(40)),7)); // random vert
+            AI_w2l3.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy3"], new Rectangle(Res.gI().ScaleX(60), Res.gI().ScaleY(120), Res.gI().ScaleX(60), Res.gI().ScaleY(60)),10)); // chiote
 
             AI_w2l3.Add(new AI_moderate(Content_Manager.getInstance().Textures["boss2"], new Rectangle(Res.gI().ScaleX(2250), Res.gI().ScaleY(330), Res.gI().ScaleX(70), Res.gI().ScaleY(90)), 1));
             AI_w2l3.Add(new AI_moderate(Content_Manager.getInstance().Textures["boss3"], new Rectangle(Res.gI().ScaleX(2250), Res.gI().ScaleY(430), Res.gI().ScaleX(70), Res.gI().ScaleY(90)), 1));

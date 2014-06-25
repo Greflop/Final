@@ -128,6 +128,7 @@
     <Compile Include="DyingScreen.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="HealthPoint.cs" />
+    <Compile Include="Menus\Menu_multi2.cs" />
     <Compile Include="Movable.cs" />
     <Compile Include="Object.cs" />
     <Compile Include="Obstacles.cs" />

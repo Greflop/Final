@@ -5,61 +5,65 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
-using Kcaspher;
-using System.Threading;
+using Projet_2._0;
 
-namespace Projet_2._0
+namespace Kcaspher.Menus
 {
-    class Menu_Play_Multi
+    public class Menu_multi2
     {
-        Rectangle Bouton_Play, Bouton_Exit, Bouton_Options, Bouton_Solo, Bouton_Multi, Bouton_local, Bouton_host, Bouton_Join; //  Bouton_World1, Bouton_World2; // On a pas encore de Multi
-        Texture2D Text_Menu_Play_Multi;
+
+        Rectangle Bouton_Exit, Bouton_Options, Bouton_Solo, Bouton_Multi, local, host, join, Bouton_Play;
+        Texture2D Text_Menu_Play;
         Rectangle mouseClick;
         MouseState mouseState, previousmouseState;
         KeyboardState keyboardstate, previouskeyboardstate;
-        public Client c;
 
-        public Menu_Play_Multi(Texture2D Text_Menu_Play_Multi)
+        public Menu_multi2(Texture2D Text_Menu_Play)
         {
-            this.Text_Menu_Play_Multi = Text_Menu_Play_Multi;
+            this.Text_Menu_Play = Text_Menu_Play;
             Bouton_Options = new Rectangle(Res.gI().ScaleX(955), Res.gI().ScaleY(210), Res.gI().ScaleX(225), Res.gI().ScaleY(310));
+            Bouton_Solo = new Rectangle(Res.gI().ScaleX(500), Res.gI().ScaleY(525), Res.gI().ScaleX(225), Res.gI().ScaleY(310));
             Bouton_Multi = new Rectangle(Res.gI().ScaleX(755), Res.gI().ScaleY(680), Res.gI().ScaleX(225), Res.gI().ScaleY(310));
             Bouton_Exit = new Rectangle(Res.gI().ScaleX(755), Res.gI().ScaleY(280), Res.gI().ScaleX(165), Res.gI().ScaleY(80));
             Bouton_Play = new Rectangle(Res.gI().ScaleX(500), Res.gI().ScaleY(210), Res.gI().ScaleX(225), Res.gI().ScaleY(310));
-            Bouton_Solo = new Rectangle(Res.gI().ScaleX(500), Res.gI().ScaleY(525), Res.gI().ScaleX(225), Res.gI().ScaleY(310));
+            join = new Rectangle(Res.gI().ScaleX(1050), Res.gI().ScaleY(700), Res.gI().ScaleX(170), Res.gI().ScaleY(110));
+            host = new Rectangle(Res.gI().ScaleX(1300), Res.gI().ScaleY(700), Res.gI().ScaleX(100), Res.gI().ScaleY(100));
+            local = new Rectangle(Res.gI().ScaleX(1050), Res.gI().ScaleY(850), Res.gI().ScaleX(250), Res.gI().ScaleY(107));
 
-    }
-        public void MouseClicked(int x, int y, ref GameType gameType)
+        }
+
+        void MouseClicked(int x, int y, ref GameType gameType)
         {
             mouseClick = new Rectangle(x, y, 10, 10);
 
-            if (mouseClick.Intersects(Bouton_host))
+            if (mouseClick.Intersects(Bouton_Play))
             {
-                c = new Client();
-                Thread t = new Thread(new ThreadStart(Program2.Mainq));
-                t.Start();
-                t.IsBackground = true;
+                gameType = GameType.Menu_Play_Type;
             }
             if (mouseClick.Intersects(Bouton_Exit))
             {
                 Game1.GetGame().Exit();
             }
-            else if (mouseClick.Intersects(Bouton_Options))
+            if (mouseClick.Intersects(Bouton_Options))
             {
                 gameType = GameType.Menu_Option_Type;
             }
-            else if (mouseClick.Intersects(Bouton_Multi))
-            {
-                gameType = GameType.Menu_Play_Multi_Type2;
-            }
-            else if (mouseClick.Intersects(Bouton_Play))
-            {
-                gameType = GameType.Menu_Play_Type;
-            }
-            else if (mouseClick.Intersects(Bouton_Solo))
+
+            if (mouseClick.Intersects(Bouton_Solo))
             {
                 gameType = GameType.Menu_Play_Solo_Type;
+            }
+            if (mouseClick.Intersects(host))
+            {
+                System.Diagnostics.Process.Start("C:/Users/epita/Desktop/Final/zbra/bin/Debug/zbra.exe");
+            }
+            if (mouseClick.Intersects(join))
+            {
+                System.Diagnostics.Process.Start("C:/Users/epita/Desktop/Final/Client/bin/Debug/Client.exe");
+            }
+            if (mouseClick.Intersects(local))
+            {
+                gameType = GameType.Menu_Play_Multi_Type;
             }
         }
 
@@ -83,9 +87,7 @@ namespace Projet_2._0
 
         public void Draw(SpriteBatch spritebatch)
         {
-            spritebatch.Draw(Text_Menu_Play_Multi, new Rectangle(0, 0, Res.gI().ScaleX(1680), Res.gI().ScaleY(1050)), Color.White);
+            spritebatch.Draw(Text_Menu_Play, new Rectangle(0, 0, Res.gI().ScaleX(1680), Res.gI().ScaleY(1050)), Color.White);
         }
-
-
     }
 }

@@ -13,12 +13,11 @@ namespace Projet_2._0
 {
     public class Menu_Play
     {
-        Rectangle Bouton_Exit, Bouton_Options, Bouton_Solo, Bouton_Multi, lolmulti, client;
+        Rectangle Bouton_Exit, Bouton_Options, Bouton_Solo, Bouton_Multi;
         Texture2D Text_Menu_Play;
         Rectangle mouseClick;
         MouseState mouseState, previousmouseState;
         KeyboardState keyboardstate, previouskeyboardstate;
-        public Client c;
 
         public Menu_Play(Texture2D Text_Menu_Play)
         {
@@ -27,8 +26,6 @@ namespace Projet_2._0
             Bouton_Solo = new Rectangle(Res.gI().ScaleX(500), Res.gI().ScaleY(525), Res.gI().ScaleX(225), Res.gI().ScaleY(310));
             Bouton_Multi = new Rectangle(Res.gI().ScaleX(755), Res.gI().ScaleY(680), Res.gI().ScaleX(225), Res.gI().ScaleY(310));
             Bouton_Exit = new Rectangle(Res.gI().ScaleX(755), Res.gI().ScaleY(280), Res.gI().ScaleX(165), Res.gI().ScaleY(80));
-            lolmulti = new Rectangle(0, 0, 200, 200);
-            client = new Rectangle(0, 200, 200, 200);
 
         }
 
@@ -36,18 +33,6 @@ namespace Projet_2._0
         {
             mouseClick = new Rectangle(x, y, 10, 10);
 
-            if (mouseClick.Intersects(client))
-            {
-                //System.Diagnostics.Process.Start("C:/Users/epita/Desktop/Kspher/Client/bin/Debug/Client.exe");
-                c = new Client();
-                Thread t = new Thread(new ThreadStart(Program2.Mainq));
-                t.Start();
-                t.IsBackground = true;
-            }
-            if (mouseClick.Intersects(lolmulti))
-            {
-                System.Diagnostics.Process.Start("C:/Users/invité/Desktop/Network/zbra/bin/Debug/zbra.exe");
-            }
             if (mouseClick.Intersects(Bouton_Exit))
             {
                 Game1.GetGame().Exit();
@@ -62,10 +47,7 @@ namespace Projet_2._0
             }
             else if (mouseClick.Intersects(Bouton_Multi))
             {
-                gameType = GameType.Menu_Play_Multi_Type;
-                MediaPlayer.Stop();
-                MediaPlayer.Play(SoundManager.ingame);
-                MediaPlayer.IsRepeating = true;
+                gameType = GameType.Menu_Play_Multi_Type2;
             }
         }
 

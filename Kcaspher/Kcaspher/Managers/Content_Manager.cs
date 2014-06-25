@@ -52,6 +52,7 @@ namespace Projet_2._0
             AddTextures("Menu/Menu_Play_Solo_World1", "solo1");
             AddTextures("Menu/Menu_Play_Solo_World2", "solo2");
             AddTextures("Menu/Menu_Multi", "menumulti");
+            AddTextures("Menu/Menu_Multi2", "menumulti2");
             AddTextures("Menu/Menu_pause", "menupause");
             AddTextures("Menu/Menu_pause_option", "menupauseoption");
             AddTextures("PlayerWorld2/PlayerBas1", "Player1");

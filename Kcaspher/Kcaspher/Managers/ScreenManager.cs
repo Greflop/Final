@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
 using Kcaspher.AI;
 using Kcaspher;
+using Kcaspher.Menus;
 
 
 namespace Projet_2._0
@@ -25,6 +26,7 @@ namespace Projet_2._0
         Menu_Play_Solo_World1_Type,
         Menu_Play_Solo_World2_Type,
         Menu_Play_Multi_Type,
+        Menu_Play_Multi_Type2,
         Menu_Option_Type,
         Menu_Pause,
         Menu_Pause_Option,
@@ -67,6 +69,7 @@ namespace Projet_2._0
         Menu_Play_Solo_World2 menusolo2;
         Menu_Pause menupause;
         Menu_Pause_Options menupauseoption;
+        Menu_multi2 menumulti2;
         Decors d_w2l1, d_w2l2, d_w2l3, d_w1l1_1, d_w1l1_2, d_w1l2_1, d_w1l2_2, d_w1l3;
         public Camera camera;
         //AI_basic AI1;
@@ -101,6 +104,7 @@ namespace Projet_2._0
             menusolo2 = new Menu_Play_Solo_World2(Content_Manager.getInstance().Textures["solo2"]);
             menuMulti = new Menu_Play_Multi(Content_Manager.getInstance().Textures["menumulti"]);
             menupauseoption = new Menu_Pause_Options(Content_Manager.getInstance().Textures["menupauseoption"]);
+            menumulti2 = new Menu_multi2(Content_Manager.getInstance().Textures["menumulti2"]);
 
             delta = 0;
             camera = new Camera(Game1.GetGame().GraphicsDevice.Viewport);
@@ -144,7 +148,7 @@ namespace Projet_2._0
             finLvl2 = new Rectangle(Res.gI().ScaleX(4470), Res.gI().ScaleY(700), Res.gI().ScaleX(200), Res.gI().ScaleY(60));
             finLvl4 = new Rectangle(Res.gI().ScaleX(2410), Res.gI().ScaleY(60), Res.gI().ScaleX(70), Res.gI().ScaleY(90));
             finLvl5 = new Rectangle(Res.gI().ScaleX(40), Res.gI().ScaleY(900), Res.gI().ScaleX(70), Res.gI().ScaleY(90));
-            finLvl3 = new Rectangle(Res.gI().ScaleX(1838), Res.gI().ScaleY(300), Res.gI().ScaleX(23), Res.gI().ScaleY(24));
+            finLvl3 = new Rectangle(Res.gI().ScaleX(1838), Res.gI().ScaleY(300), Res.gI().ScaleX(24), Res.gI().ScaleY(24));
             boutonlvl3w1 = true;
 
 
@@ -158,7 +162,9 @@ namespace Projet_2._0
 
             switch (gametype)
             {
+               
                 case GameType.Menu_Base_Type:
+
                     menubase.update(gametime, ref gametype, ref previousgametype);
                     previousgametype = GameType.Exit;
 
@@ -390,11 +396,11 @@ namespace Projet_2._0
                     }
                     previouskeyboardstate = keyboardstate;
 
-                    //if (casper.Hitbox.Intersects(finLvl3))
-                    //{
-
-                    //    controlsWorld2.Position = new Vector2(Res.gI().ScaleX(55), Res.gI().ScaleY(924));
-                    //}
+                    if (casper.Hitbox.Intersects(finLvl3))
+                    {
+                        gametype = GameType.Trans1;
+                        controlsWorld2.Position = new Vector2(Res.gI().ScaleX(55), Res.gI().ScaleY(924));
+                    }
                     break;
                 case GameType.Menu_Play_Solo_world2_lvl1:
                     previousgametype = GameType.Menu_Play_Solo_World1_Type;
@@ -618,6 +624,10 @@ namespace Projet_2._0
                     break;
                 case GameType.Dead:
                     cinematic.update(GameType.Menu_Base_Type);
+                    break;
+                case GameType.Menu_Play_Multi_Type2:
+                    menumulti2.update(gametime, ref gametype, ref previousgametype);
+                    previousgametype = GameType.Menu_Play_Multi_Type;
                     break;
                 default:
                     menubase.update(gametime, ref gametype, ref previousgametype);
@@ -864,6 +874,9 @@ namespace Projet_2._0
                     break;
                 case GameType.Dead:
                     cinematic.Draw(spritebatch, Content_Manager.getInstance().Textures["Dead"]);
+                    break;
+                case GameType.Menu_Play_Multi_Type2:
+                    menumulti2.Draw(spritebatch);
                     break;
                 default:
                     menubase.Draw(spritebatch);

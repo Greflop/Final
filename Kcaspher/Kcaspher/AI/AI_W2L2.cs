@@ -16,10 +16,10 @@ namespace Kcaspher.AI
 
         public AI_W2L2()
         {
-            AI_w2l2.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(1790), Res.gI().ScaleY(540), Res.gI().ScaleX(40), Res.gI().ScaleY(40)),10));
-            AI_w2l2.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(2160), Res.gI().ScaleY(540), Res.gI().ScaleX(40), Res.gI().ScaleY(40)),10));
-            AI_w2l2.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(1740), Res.gI().ScaleY(80), Res.gI().ScaleX(40), Res.gI().ScaleY(40)),10));
-            AI_w2l2.Add(new AI_moderate(Content_Manager.getInstance().Textures["focheur"], new Rectangle(Res.gI().ScaleX(200), Res.gI().ScaleY(470), Res.gI().ScaleX(60), Res.gI().ScaleY(100)), 40));
+            AI_w2l2.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(1790), Res.gI().ScaleY(540), Res.gI().ScaleX(40), Res.gI().ScaleY(40)),7));
+            AI_w2l2.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(2160), Res.gI().ScaleY(540), Res.gI().ScaleX(40), Res.gI().ScaleY(40)),7));
+            AI_w2l2.Add(new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(1740), Res.gI().ScaleY(80), Res.gI().ScaleX(40), Res.gI().ScaleY(40)),7));
+            AI_w2l2.Add(new AI_moderate(Content_Manager.getInstance().Textures["focheur"], new Rectangle(Res.gI().ScaleX(200), Res.gI().ScaleY(470), Res.gI().ScaleX(60), Res.gI().ScaleY(100)), 20));
 
         }
 

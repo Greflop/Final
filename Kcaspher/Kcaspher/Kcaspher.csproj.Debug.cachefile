@@ -27,6 +27,7 @@ Content\Menu\Menu_Play_Solo_World2.xnb
 Content\Niveaux\W1L1_1.xnb
 Content\Niveaux\W1L1_2.xnb
 Content\Niveaux\W1L2_1.xnb
+Content\Niveaux\W1L2_2.xnb
 Content\Niveaux\W1L3.xnb
 Content\Niveaux\World2_lvl1.xnb
 Content\Niveaux\World2_lvl2.xnb
@@ -61,18 +62,6 @@ Content\boss\boss5.xnb
 Content\feu\feu1.xnb
 Content\feu\feu2.xnb
 Content\feu\feu3.xnb
-Content\Cinematicmagueule\Casper GhostbustersEnd.xnb
-Content\Cinematicmagueule\Casper Mad Gauche.xnb
-Content\Cinematicmagueule\Ghostbusters Droite.xnb
-Content\Cinematicmagueule\Boss Ghostbusters.xnb
-Content\Cinematicmagueule\Boss W1 Gauche.xnb
-Content\Cinematicmagueule\Boss W1 Droite.xnb
-Content\Cinematicmagueule\Casper Boss.xnb
-Content\Cinematicmagueule\Ghostbusters DroiteINtro.xnb
-Content\Cinematicmagueule\Casper Mad GaucheTrans.xnb
-Content\Particules\heart.xnb
-Content\Particules\heart2.xnb
-Content\CasperFail.xnb
 Content\Songs\Casper sound\Hp_lost.xnb
 Content\Songs\Casper sound\Jump.xnb
 Content\Songs\IA sound\Alert_AI.xnb
@@ -86,8 +75,20 @@ Content\Songs\Ambiance3.xnb
 Content\Songs\Ambiance4.xnb
 Content\Songs\Ambiance5.xnb
 Content\Songs\Ambiance6.xnb
+Content\Particules\heart.xnb
+Content\Particules\heart2.xnb
+Content\Cinematicmagueule\Casper GhostbustersEnd.xnb
+Content\Cinematicmagueule\Casper Mad Gauche.xnb
+Content\Cinematicmagueule\Ghostbusters Droite.xnb
+Content\Cinematicmagueule\Boss Ghostbusters.xnb
+Content\Cinematicmagueule\Boss W1 Gauche.xnb
+Content\Cinematicmagueule\Boss W1 Droite.xnb
+Content\Cinematicmagueule\Casper Boss.xnb
+Content\Cinematicmagueule\Ghostbusters DroiteINtro.xnb
+Content\Cinematicmagueule\Casper Mad GaucheTrans.xnb
+Content\CasperFail.xnb
 Content\Niveaux\WallW1L2.xnb
-Content\Niveaux\W1L2_2.xnb
+Content\Menu\Menu_Multi2.xnb
 Content\Songs\Ambiance.wma
 Content\Songs\Ambiance_ingame.wma
 Content\Songs\Ambiance_Pause.wma
